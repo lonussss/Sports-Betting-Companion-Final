@@ -101,7 +101,7 @@ erDiagram
         per90_g_a_pk float4
     }
 
-     wc_2026_quals_shooting_stats {
+    wc_2026_quals_shooting_stats {
         squad text
         pl float4
         g90 float4
@@ -158,6 +158,7 @@ erDiagram
         pick text
         current_odds text
     }
+
     qualifying_odds ||--o{ team_performance : links
     qualifying_odds ||--o{ wc_2026_quals_standard_stats : links
     qualifying_odds ||--o{ wc_2026_quals_shooting_stats : links
@@ -170,8 +171,6 @@ erDiagram
     top_features ||--o{ wc_2026_quals_passing_stats : references
     top_features ||--o{ valuebets : informs
 ```
-
-    
 
 
 

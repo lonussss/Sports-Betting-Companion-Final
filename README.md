@@ -53,9 +53,9 @@ erDiagram
         float4 possession_pct
         float4 ga
         float4 pka
-        float4 fk
-        float4 ck
-        float4 og
+        float4 free_kicks
+        float4 corner_kicks
+        float4 own_goals
         float4 ps_g
         float4 psxg_sot
         float4 psxg_plus_minus
@@ -90,7 +90,86 @@ erDiagram
         int8 gls
         int8 ast
         int8 g_a
+        int8 g_pk
+        int8 pkatt
+        int8 crdy
+        int8 crdr
+        float4 per90_gls
+        float4 per90_ast
+        float4 per90_g_a
+        float4 per90_g_pk
+        float4 per90_g_a_pk
+    }
 
+    wc_2026_quals_shooting_stats {
+        text squad
+        float4 pl
+        float4 g90
+        float4 gls
+        float4 sh
+        float4 sot
+        float4 sot_pct
+        float4 sh90
+        float4 sot90
+        float4 g_per_sh
+        float4 g_per_sot
+        text dist
+        int8 penalty_kicks
+        int8 pkatt
+    }
+
+    wc_2026_quals_goalkeeping_stats {
+        text squad
+        float4 ga90
+        float4 sota
+        float4 saves
+        float4 save_pct
+        float4 w
+        float4 d
+        float4 l
+        float4 cs
+        float4 cs_pct
+        float4 pkatt
+        float4 pka
+        float4 pksv
+        float4 pkm
+        float4 pk_save_pct
+    }
+
+    wc_2026_quals_passing_stats {
+        text team
+        float4 pass_success_pct
+        float4 accurate_passes_per
+        float4 successful_long_ball
+        float4 successful_long_ball_pct
+        float4 cross_success_pct
+        float4 crosses_per_match
+    }
+
+    top_features {
+        text feature_name
+        int2 ranking
+    }
+
+    valuebets {
+        int8 id
+        text match_name
+        text market
+        text pick
+        text current_odds
+    }
+
+    qualifying_odds ||--o{ team_performance : links
+    qualifying_odds ||--o{ wc_2026_quals_standard_stats : links
+    qualifying_odds ||--o{ wc_2026_quals_shooting_stats : links
+    qualifying_odds ||--o{ wc_2026_quals_goalkeeping_stats : links
+    qualifying_odds ||--o{ wc_2026_quals_passing_stats : links
+    top_features ||--o{ team_performance : references
+    top_features ||--o{ wc_2026_quals_standard_stats : references
+    top_features ||--o{ wc_2026_quals_shooting_stats : references
+    top_features ||--o{ wc_2026_quals_goalkeeping_stats : references
+    top_features ||--o{ wc_2026_quals_passing_stats : references
+    top_features ||--o{ valuebets : informs
 ```
 ### Tables Description
 

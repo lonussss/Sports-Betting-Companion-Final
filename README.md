@@ -6,6 +6,7 @@
 Sports Betting Companion is a data-driven tool that helps users find undervalued soccer bets using historical data and live sportsbook odds. With the 2026 World Cup coming to the US, many new bettors may not know much about the teams or players. Our goal is to make it easier for them to make smarter, data-backed bets. By connecting historical performance data with sportsbook odds, users can identify which teams are statistically undervalued compared to their betting lines.
 
 ### Entity Relationship Diagram
+```mermaid
 erDiagram
     qualifying_odds {
         team text
@@ -13,7 +14,6 @@ erDiagram
         comp_id int2
         season int2
     }
-
     team_performance {
         team text
         goals float4
@@ -77,7 +77,6 @@ erDiagram
         avglen_1 float4
         ts_id int2
     }
-
     wc_2026_quals_standard_stats {
         squad text
         pl int8
@@ -99,8 +98,7 @@ erDiagram
         per90_g_pk float4
         per90_g_a_pk float4
     }
-
-    wc_2026_quals_shooting_stats {
+     wc_2026_quals_shooting_stats {
         squad text
         pl float4
         g90 float4
@@ -116,7 +114,6 @@ erDiagram
         pk int8
         pkatt int8
     }
-
     wc_2026_quals_goalkeeping_stats {
         squad text
         ga90 float4
@@ -134,7 +131,6 @@ erDiagram
         pkm float4
         pk_save_pct float4
     }
-
     wc_2026_quals_passing_stats {
         team text
         pass_success_pct float4
@@ -144,34 +140,27 @@ erDiagram
         cross_success_pct float4
         crosses_per_match float4
     }
-
-    qualifying_odds ||--o{ team_performance : links
-    qualifying_odds ||--o{ wc_2026_quals_standard_stats : links
-    qualifying_odds ||--o{ wc_2026_quals_shooting_stats : links
-    qualifying_odds ||--o{ wc_2026_quals_goalkeeping_stats : links
-    qualifying_odds ||--o{ wc_2026_quals_passing_stats : links
-
     top_features {
         feature_name text
         ranking int2
     }
-
-    erDiagram
-    top_features ||--o{ team_performance : references
-    top_features ||--o{ wc_2026_quals_standard_stats : references
-    top_features ||--o{ wc_2026_quals_shooting_stats : references
-    top_features ||--o{ wc_2026_quals_goalkeeping_stats : references
-    top_features ||--o{ wc_2026_quals_passing_stats : references
-
-    top_features {
+    valuebets {
         id int8
         match text
         market text
         pick text
         current_odds text
     }
-
-    erDiagram
+    qualifying_odds ||--o{ team_performance : links
+    qualifying_odds ||--o{ wc_2026_quals_standard_stats : links
+    qualifying_odds ||--o{ wc_2026_quals_shooting_stats : links
+    qualifying_odds ||--o{ wc_2026_quals_goalkeeping_stats : links
+    qualifying_odds ||--o{ wc_2026_quals_passing_stats : links
+    top_features ||--o{ team_performance : references
+    top_features ||--o{ wc_2026_quals_standard_stats : references
+    top_features ||--o{ wc_2026_quals_shooting_stats : references
+    top_features ||--o{ wc_2026_quals_goalkeeping_stats : references
+    top_features ||--o{ wc_2026_quals_passing_stats : references
     top_features ||--o{ valuebets : informs
 
 

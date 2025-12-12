@@ -14,6 +14,7 @@ erDiagram
         comp_id int2
         season int2
     }
+
     team_performance {
         team text
         goals float4
@@ -77,6 +78,7 @@ erDiagram
         avglen_1 float4
         ts_id int2
     }
+
     wc_2026_quals_standard_stats {
         squad text
         pl int8
@@ -98,6 +100,7 @@ erDiagram
         per90_g_pk float4
         per90_g_a_pk float4
     }
+
      wc_2026_quals_shooting_stats {
         squad text
         pl float4
@@ -114,6 +117,7 @@ erDiagram
         pk int8
         pkatt int8
     }
+
     wc_2026_quals_goalkeeping_stats {
         squad text
         ga90 float4
@@ -131,6 +135,7 @@ erDiagram
         pkm float4
         pk_save_pct float4
     }
+
     wc_2026_quals_passing_stats {
         team text
         pass_success_pct float4
@@ -140,10 +145,12 @@ erDiagram
         cross_success_pct float4
         crosses_per_match float4
     }
+
     top_features {
         feature_name text
         ranking int2
     }
+
     valuebets {
         id int8
         match text
@@ -151,8 +158,6 @@ erDiagram
         pick text
         current_odds text
     }
-```
-
     qualifying_odds ||--o{ team_performance : links
     qualifying_odds ||--o{ wc_2026_quals_standard_stats : links
     qualifying_odds ||--o{ wc_2026_quals_shooting_stats : links
@@ -164,8 +169,7 @@ erDiagram
     top_features ||--o{ wc_2026_quals_goalkeeping_stats : references
     top_features ||--o{ wc_2026_quals_passing_stats : references
     top_features ||--o{ valuebets : informs
-
-
+```
 
     
 
